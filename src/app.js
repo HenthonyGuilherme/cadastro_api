@@ -15,9 +15,9 @@ app.use(cors())
 
 app.post('/create', async (req, res) => {
     try {
-        const { nome, email, senha, dataDia, dataMes, dataAno } = req.body
+        const { nome, sobrenome, email, senha, dataDia, dataMes, dataAno } = req.body
         
-        const cadastro = await Cadastro.create({ nome, email, senha, dataDia, dataMes, dataAno })
+        const cadastro = await Cadastro.create({ nome, sobrenome, email, senha, dataDia, dataMes, dataAno })
         
         res.send(cadastro)
     }catch(err) {
@@ -51,9 +51,9 @@ app.patch('/update/:cadastro_id', async (req, res) => {
     try {
         const cadastroId = req.params.cadastro_id
 
-        const { nome, email, senha, dataDia, dataMes, dataAno } = req.body
+        const { nome, sobrenome, email, senha, dataDia, dataMes, dataAno } = req.body
 
-        const cadastro = await Cadastro.findByIdAndUpdate(cadastroId, { nome, email, senha, dataDia, dataMes, dataAno }, { new: true })
+        const cadastro = await Cadastro.findByIdAndUpdate(cadastroId, { nome, sobrenome, email, senha, dataDia, dataMes, dataAno }, { new: true })
 
         res.send({ cadastro })
     } catch(err) {
